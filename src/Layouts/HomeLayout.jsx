@@ -22,7 +22,7 @@ const HomeLayout = () => {
       </header>
 
       {/*//* Main */}
-      <main className="grid grid-cols-12 gap-8 mx-auto my-3 w-11/12 *:border">
+      <main className="grid grid-cols-12 gap-8 mx-auto my-3 w-11/12">
         {/*//? Left Nav*/}
         <aside className="col-span-3">
           <LeftAside></LeftAside>
