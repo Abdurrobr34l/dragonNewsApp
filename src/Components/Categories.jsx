@@ -13,7 +13,7 @@ const Categories = () => {
     <div>
       <h2 className='font-semibold'>All Categories ({categories.length})</h2>
 
-      <ul className='mt-3 categories-ul'>
+      <ul className='mt-5 categories-ul'>
         {
           categories.map(({id, name}) => (
             <li key={id}>
