@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="px-14"></div>
 
       <nav>
-        <ul className="flex gap-5">
+        <ul className="flex gap-5 navbar-ul">
           {navigationLinks.map(({ id, path, name }) => (
             <li key={id}>
               <NavLink to={path} className={"text-accent"}>
