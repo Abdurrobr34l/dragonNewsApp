@@ -1,6 +1,6 @@
 import React from "react";
-import { FaRegBookmark } from "react-icons/fa";
-import { IoShareSocialOutline } from "react-icons/io5";
+import { FaRegBookmark, FaStar } from "react-icons/fa";
+import { IoEye, IoShareSocialOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
 const NewsCard = ({ newsByCategory }) => {
@@ -8,8 +8,11 @@ const NewsCard = ({ newsByCategory }) => {
     <>
       <div>
         {newsByCategory.map((news) => (
-          <div className="mt-10 first:mt-0 border border-base-300 rounded-lg">
-            {/* Author & Share */}
+          <div
+            key={news.id}
+            className="mt-10 first:mt-0 border border-base-300 rounded-lg"
+          >
+            {/*//* Author & Share */}
             <div className="flex items-center justify-between p-7 py-4 bg-base-300 rounded-t-lg">
               {/*//? Author */}
               <div className="flex items-center gap-3">
@@ -43,23 +46,29 @@ const NewsCard = ({ newsByCategory }) => {
               </div>
             </div>
 
-            {/* Contents */}
+            {/*//* Contents */}
             <div className="p-7 pt-5">
-              {/* Title */}
+              {/*//? Title */}
               <h2 className="my-5 text-2xl font-bold text-primary">
                 {news.title}
               </h2>
 
-              {/* Image */}
+              {/*//? Image */}
               <img
                 src={news.image_url}
                 alt="It is news image"
                 className="w-full rounded-lg"
               />
 
-              {/* Description & Button */}
+              {/*//? Description & Button */}
               <div className="mt-12">
-                <p className="text-lg">{news.details}</p>
+                <p className="text-lg">
+                  {news.details.length > 200 ? (
+                    <>{news.details.slice(0, 200)}.....</>
+                  ) : (
+                    news.details
+                  )}
+                </p>
                 <Link className="btn btn-ghost btn-primary mt-2 p-0 text-md font-bold border-none hover:text-accent hover:bg-transparent hover:border-none hover:shadow-none">
                   Read More
                 </Link>
@@ -67,8 +76,31 @@ const NewsCard = ({ newsByCategory }) => {
 
               <hr className="my-5 text-base-300" />
 
-              {/* Rating & View */}
-              <div></div>
+              {/*//? Rating & View */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  {/* 5 stars */}
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar
+                      key={i}
+                      className={`${
+                        i < Math.round(news.rating)
+                          ? "text-gray-300"
+                          : "text-orange-400"
+                      }`}
+                    />
+                  ))}
+                  {/* Rating Number */}
+                  <span className="text-accent font-medium">
+                    {news.rating.number}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <IoEye className="text-2xl text-primary"/>
+                  <p>{news.total_view}</p>
+                </div>
+              </div>
             </div>
           </div>
         ))}
