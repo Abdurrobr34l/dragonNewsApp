@@ -8,11 +8,12 @@ const CategoryNews = () => {
   // const newsData = useLoaderData(); //* All 58 news data
   const { newsData } = useOutletContext();
   const [newsByCategory, setNewsByCategory] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (id == "0") {
       setNewsByCategory(newsData); //* show all 58 news data
-      return;
+      // return;
     } else if (id == "1") {
       //* This one to find Breaking news data only
       const filterBreakingNews = newsData.filter(
@@ -27,15 +28,24 @@ const CategoryNews = () => {
 
       setNewsByCategory(filterNewsById);
     }
+    setLoading(false);
   }, [id, newsData]);
 
   return (
     <div>
-      <h2 className="mb-5 font-semibold">Dragon News Home</h2>
+      {loading ? (
+        <div className="flex justify-center items-center h-40">
+          <span className="loading loading-spinner !w-[80px] bg-secondary"></span>
+        </div>
+      ) : (
+        <div>
+          <h2 className="mb-5 font-semibold">Dragon News Home</h2>
 
-      <div className="col-span-1">
-        <NewsCard newsByCategory={newsByCategory}></NewsCard>
-      </div>
+          <div className="col-span-1">
+            <NewsCard newsByCategory={newsByCategory}></NewsCard>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
