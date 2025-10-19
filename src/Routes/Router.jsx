@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import HomeLayout from "../Layouts/HomeLayout";
 import Home from "../Pages/Home";
 import CategoryNews from "../Pages/CategoryNews";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
   },
   {
     path:"/*",
-    element: <h2>Error 404</h2>
+    element: <ErrorPage></ErrorPage>
   }
 ])
 
