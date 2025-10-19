@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Outlet, useLoaderData } from "react-router";
 import Header from "../Components/Header";
 import LatestNews from "../Components/LatestNews";
 import Navbar from "../Components/Navbar";
@@ -7,13 +7,14 @@ import LeftAside from "../Components/Homelayout/LeftAside";
 import RightAside from "../Components/Homelayout/rightAside";
 
 const HomeLayout = () => {
+    const newsData = useLoaderData(); //* All 58 news data
   return (
     <div>
       {/*//* Header */}
       <header>
         <Header></Header>
         <section className="mx-auto w-11/12">
-          <LatestNews></LatestNews>
+          <LatestNews newsData={newsData}></LatestNews>
         </section>
 
         <nav className="mx-auto w-11/12">
@@ -30,7 +31,7 @@ const HomeLayout = () => {
 
         {/*//? Main*/}
         <main  className="col-span-6">
-          <Outlet></Outlet>
+          <Outlet context={{newsData}}></Outlet>
         </main>
 
         {/*//? Right Nav*/}
