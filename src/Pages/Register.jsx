@@ -55,9 +55,9 @@ const Register = () => {
           </div>
 
           <label className="label">
-    <input type="checkbox" defaultChecked className="checkbox" />
-    Accept Term and Conditions
-  </label>
+            <input type="checkbox" defaultChecked className="checkbox" />
+            Accept Term and Conditions
+          </label>
 
           {/*//* Submit Button */}
           <button className="btn btn-neutral mt-4">Register</button>
