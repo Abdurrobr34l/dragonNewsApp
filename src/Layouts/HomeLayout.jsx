@@ -11,7 +11,7 @@ const HomeLayout = () => {
   return (
     <div>
       {/*//* Header */}
-      <header>
+      <header className="pt-5">
         <Header></Header>
         <section className="mx-auto w-11/12">
           <LatestNews newsData={newsData}></LatestNews>
