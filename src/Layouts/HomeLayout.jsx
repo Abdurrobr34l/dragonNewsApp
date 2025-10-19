@@ -25,7 +25,7 @@ const HomeLayout = () => {
       {/*//* Main */}
       <main className="grid grid-cols-12 gap-8 mx-auto my-3 w-11/12">
         {/*//? Left Nav*/}
-        <aside className="col-span-3">
+        <aside className="overflow-auto sticky top-10 col-span-3 max-h-screen">
           <LeftAside></LeftAside>
         </aside>
 
@@ -35,7 +35,7 @@ const HomeLayout = () => {
         </main>
 
         {/*//? Right Nav*/}
-        <aside className="col-span-3">
+        <aside className="scrollbar-custom overflow-auto sticky top-10 col-span-3 max-h-screen">
           <RightAside></RightAside>
         </aside>
       </main>

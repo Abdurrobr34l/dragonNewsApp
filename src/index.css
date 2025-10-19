@@ -31,3 +31,24 @@
 .findus-button {
   @apply justify-start gap-2 !py-8 text-primary text-[14px] !w-full bg-transparent shadow-none transition-colors duration-200 ease-linear hover:bg-secondary hover:text-white;
 }
+
+/* global.css or index.css */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px; /* width of scrollbar */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #f0f0f000 !important; /* track color */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #f0f0f000 !important; /* thumb color */
+  border-radius: 4px; /* rounded edges */
+  border: 2px solid #f0f0f0; /* optional border */
+}
+
+/* Firefox */
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: #d72050 #f0f0f000;
+}
