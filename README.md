@@ -1,16 +1,47 @@
-# React + Vite
+# 📰 Dragon News
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site:** [https://dragon-news-auth-c17d6.web.app/category/0](https://dragon-news-auth-c17d6.web.app/category/0)
 
-Currently, two official plugins are available:
+Dragon News is a responsive news portal built with **React**, **Vite**, and **Firebase Authentication**.  
+It allows users to browse categorized news, read detailed articles, and securely log in or register using Firebase.  
+The project is styled with **Tailwind CSS** and enhanced with **DaisyUI** and **React Icons** for a clean, modern UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🧭 **Dynamic Routing:** Implemented using `react-router` for smooth navigation.
+- 🔒 **Private Routes:** News details pages are protected and accessible only to logged-in users.
+- 🔐 **Firebase Authentication:** Email/password-based authentication using Firebase.
+- ⚡ **Fast Development:** Built with `Vite` for optimized development and lightning-fast builds.
+- 🧩 **Reusable Components:** Modular layout using layouts, providers, and page components.
+- 💅 **Tailwind CSS & DaisyUI:** Responsive design with utility-first CSS and pre-styled UI components.
+- 🔔 **React Hot Toast:** Real-time success/error notifications for user feedback.
+- 📆 **Date-FNS:** Used for date formatting throughout the app.
+- 📰 **Dynamic Data Loading:** Fetches data from `news.json` using route loaders.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔧 Technologies Used
+
+| Category | Tools/Packages |
+|-----------|----------------|
+| Frontend Framework | React (v19) |
+| Build Tool | Vite |
+| Styling | Tailwind CSS, DaisyUI |
+| Routing | React Router (v7) |
+| Authentication | Firebase |
+| Notifications | React Hot Toast |
+| Icons | React Icons |
+| Date Formatting | Date-FNS |
+
+---
+
+## 🧠 Key Concepts Used
+
+- React Context API for global authentication state management.
+- PrivateRoute component to restrict access to protected pages.
+- Route loaders and `hydrateFallbackElement` for better user experience during data fetching.
+- Environment variables for Firebase credentials using `import.meta.env`.
+
+---
