@@ -1,6 +1,8 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
-import user from "../assets/user.png";
+import userImage from "../assets/user.png";
+import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const navigationLinks = [
@@ -9,9 +11,23 @@ const Navbar = () => {
     { id: 3, path: "/career", name: "Career" },
   ];
 
+  const { user, logOut } = use(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Logout Sucessfully");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
-    <div className="flex items-center justify-between">
-      <div className="px-14"></div>
+    <div className="flex items-center justify-between py-6">
+      <div className="pr-14">
+        {user.email}
+      </div>
 
       <nav>
         <ul className="flex gap-5 navbar-ul">
@@ -26,8 +42,20 @@ const Navbar = () => {
       </nav>
 
       <div className="flex gap-3">
-        <img src={user} alt="It is an user image" className="rounded-full border-secondary border-2"/>
-        <Link to={"/auth/login"} className="btn btn-primary !py-5 !px-8">Login</Link>
+        <img
+          src={userImage}
+          alt="It is an user image"
+          className="rounded-full border-secondary border-2"
+        />
+        {user ? (
+          <Link onClick={handleLogOut} className="btn btn-primary !py-5 !px-8">
+            LogOut
+          </Link>
+        ) : (
+          <Link to={"/auth/login"} className="btn btn-primary !py-5 !px-8">
+            LogIn
+          </Link>
+        )}
       </div>
     </div>
   );
