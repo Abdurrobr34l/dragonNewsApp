@@ -1,14 +1,12 @@
 import React from 'react';
 import { FaRegBookmark, FaStar } from 'react-icons/fa';
 import { IoEye, IoShareSocialOutline } from 'react-icons/io5';
+import { Link } from 'react-router';
 
 const NewsDetailsCard = ({newsItem}) => {
   
   return (
-   <div
-            key={newsItem.id}
-            className="mt-10 first:mt-0 border border-base-300 rounded-lg"
-          >
+   <div className="my-10 first:mt-0 border border-base-300 rounded-lg">
             {/*//* Author & Share */}
             <div className="flex items-center justify-between p-7 py-4 bg-base-300 rounded-t-lg">
               {/*//? Author */}
@@ -60,9 +58,9 @@ const NewsDetailsCard = ({newsItem}) => {
               {/*//? Description & Button */}
               <div className="mt-12">
                 <p className="text-lg">{newsItem.details}</p>
-                {/* <Link to={`/news-details/${newsItem.id}`} className="btn btn-ghost btn-primary mt-2 p-0 text-md font-bold border-none hover:text-accent hover:bg-transparent hover:border-none hover:shadow-none">
-                  Read More
-                </Link> */}
+                <Link to={`/category/${newsItem.category_id}`} className="btn btn-secondary mt-4 text-md font-bold border-none hover:text-accent hover:bg-transparent hover:border-none hover:shadow-none">
+                  Back to categories
+                </Link>
               </div>
 
               <hr className="my-5 text-base-300" />
