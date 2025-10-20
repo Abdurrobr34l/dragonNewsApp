@@ -1,17 +1,19 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { setUser, createUser } = use(AuthContext);
+  const { setUser, createUser, updateUser } = use(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
 
     const form = e.target;
     const name = e.target.name.value;
-    // const photo = e.target.photo.value;
+    const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
@@ -52,7 +54,12 @@ const Register = () => {
         // console.log(user);
         toast.success("Account created successfully!");
         //todo 2) After getting the user data send it to user state in authprovider to use it in other places
-        setUser(user)
+        updateUser({ displayName: name, photoURL: photo }).then(() => {
+          setUser({...user, displayName: name, photoURL: photo});
+          navigate("/")
+        }).catch((error) => {
+          console.log(error);
+        })
 
         //* Clearsform inputs value after successful registration
         form.reset();

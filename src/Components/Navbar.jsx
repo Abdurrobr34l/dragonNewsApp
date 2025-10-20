@@ -25,8 +25,8 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between py-6">
-      <div className="pr-14">
-        {user ? user.email : ""}
+      <div className="pr-14 text-2xl font-bold">
+        {user ? user.displayName : ""}
       </div>
 
       <nav>
@@ -41,11 +41,11 @@ const Navbar = () => {
         </ul>
       </nav>
 
-      <div className="flex gap-3">
+      <div className="flex items-center gap-3">
         <img
-          src={userImage}
+          src={user ? user.photoURL : userImage}
           alt="It is an user image"
-          className="rounded-full border-secondary border-2"
+          className="size-14 border-secondary border-4 rounded-full"
         />
         {user ? (
           <Link onClick={handleLogOut} className="btn btn-primary !py-5 !px-8">
