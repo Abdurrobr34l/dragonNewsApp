@@ -1,15 +1,12 @@
-import React from "react";
-import { FaRegBookmark, FaStar } from "react-icons/fa";
-import { IoEye, IoShareSocialOutline } from "react-icons/io5";
-import { Link } from "react-router";
+import React from 'react';
+import { FaRegBookmark, FaStar } from 'react-icons/fa';
+import { IoEye, IoShareSocialOutline } from 'react-icons/io5';
 
-const NewsCard = ({ newsByCategory }) => {
+const NewsDetailsCard = ({newsItem}) => {
+  
   return (
-    <>
-      <div>
-        {newsByCategory.map((news) => (
-          <div
-            key={news.id}
+   <div
+            key={newsItem.id}
             className="mt-10 first:mt-0 border border-base-300 rounded-lg"
           >
             {/*//* Author & Share */}
@@ -19,7 +16,7 @@ const NewsCard = ({ newsByCategory }) => {
                 {/*//? Author Image */}
                 <div>
                   <img
-                    src={news.author.img}
+                    src={newsItem.author.img}
                     alt="It is author image of this blog"
                     className="size-20 rounded-full"
                   />
@@ -28,9 +25,9 @@ const NewsCard = ({ newsByCategory }) => {
                 {/*//? Author Name */}
                 <div>
                   <p className="text-xl font-bold text-primary">
-                    {news.author.name}
+                    {newsItem.author.name}
                   </p>
-                  <p className="text-primary">{news.author.published_date}</p>
+                  <p className="text-primary">{newsItem.author.published_date}</p>
                 </div>
               </div>
 
@@ -50,28 +47,22 @@ const NewsCard = ({ newsByCategory }) => {
             <div className="p-7 pt-5">
               {/*//? Title */}
               <h2 className="my-5 text-2xl font-bold text-primary">
-                {news.title}
+                {newsItem.title}
               </h2>
 
               {/*//? Image */}
               <img
-                src={news.image_url}
+                src={newsItem.image_url}
                 alt="It is news image"
                 className="w-full rounded-lg"
               />
 
               {/*//? Description & Button */}
               <div className="mt-12">
-                <p className="text-lg">
-                  {news.details.length > 200 ? (
-                    <>{news.details.slice(0, 200)}.....</>
-                  ) : (
-                    news.details
-                  )}
-                </p>
-                <Link to={`/news-details/${news.id}`} className="btn btn-ghost btn-primary mt-2 p-0 text-md font-bold border-none hover:text-accent hover:bg-transparent hover:border-none hover:shadow-none">
+                <p className="text-lg">{newsItem.details}</p>
+                {/* <Link to={`/news-details/${newsItem.id}`} className="btn btn-ghost btn-primary mt-2 p-0 text-md font-bold border-none hover:text-accent hover:bg-transparent hover:border-none hover:shadow-none">
                   Read More
-                </Link>
+                </Link> */}
               </div>
 
               <hr className="my-5 text-base-300" />
@@ -84,7 +75,7 @@ const NewsCard = ({ newsByCategory }) => {
                     <FaStar
                       key={i}
                       className={`${
-                        i < Math.round(news.rating)
+                        i < Math.round(newsItem.rating)
                           ? "text-gray-300"
                           : "text-orange-400"
                       }`}
@@ -92,21 +83,18 @@ const NewsCard = ({ newsByCategory }) => {
                   ))}
                   {/* Rating Number */}
                   <span className="text-accent font-medium">
-                    {news.rating.number}
+                    {newsItem.rating.number}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <IoEye className="text-2xl text-primary"/>
-                  <p>{news.total_view}</p>
+                  <p>{newsItem.total_view}</p>
                 </div>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-    </>
   );
 };
 
-export default NewsCard;
+export default NewsDetailsCard;
