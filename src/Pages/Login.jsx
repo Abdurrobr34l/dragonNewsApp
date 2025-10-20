@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -14,11 +17,35 @@ const Login = () => {
     const password = e.target.password.value;
     // console.log(email, password);
 
+    //* Client-side validation (IMPORTANT)
+    if (!email) {
+      toast.error("Email is required");
+      return;
+    }
+
+    // Simple email regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Enter a valid email address");
+      return;
+    }
+
+    if (!password) {
+      toast.error("Password is required");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
+
     signIn(email, password)
       .then((result) => {
         const user = result.user;
         // console.log(user);
         user ? toast.success("Logged In Sucessfully") : "";
+        navigate(`${location.state} ? location.state : "/"`);
         form.reset();
       })
       .catch((error) => {

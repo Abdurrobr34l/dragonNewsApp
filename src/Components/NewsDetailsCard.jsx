@@ -4,7 +4,11 @@ import { IoEye, IoShareSocialOutline } from 'react-icons/io5';
 import { Link } from 'react-router';
 
 const NewsDetailsCard = ({newsItem}) => {
-  
+
+  if (!newsItem) {
+    return <p className="text-center my-10 text-red-500">News not found.</p>;
+  }
+
   return (
    <div className="my-10 first:mt-0 border border-base-300 rounded-lg">
             {/*//* Author & Share */}
@@ -14,7 +18,7 @@ const NewsDetailsCard = ({newsItem}) => {
                 {/*//? Author Image */}
                 <div>
                   <img
-                    src={newsItem.author.img}
+                    src={newsItem.author?.img}
                     alt="It is author image of this blog"
                     className="size-20 rounded-full"
                   />
@@ -23,9 +27,9 @@ const NewsDetailsCard = ({newsItem}) => {
                 {/*//? Author Name */}
                 <div>
                   <p className="text-xl font-bold text-primary">
-                    {newsItem.author.name}
+                    {newsItem.author?.name}
                   </p>
-                  <p className="text-primary">{newsItem.author.published_date}</p>
+                  <p className="text-primary">{newsItem.author?.published_date}</p>
                 </div>
               </div>
 
