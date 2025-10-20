@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 // import { useLoaderData, useParams } from "react-router";
 import { useOutletContext, useParams } from "react-router";
 import NewsCard from "../Components/NewsCard";
+import Loading from "../Components/Loading";
 
 const CategoryNews = () => {
   const { id } = useParams();
@@ -34,9 +35,7 @@ const CategoryNews = () => {
   return (
     <div>
       {loading ? (
-        <div className="flex justify-center items-center h-40">
-          <span className="loading loading-spinner !w-[80px] bg-secondary"></span>
-        </div>
+        <Loading></Loading>
       ) : (
         <div>
           <h2 className="mb-5 font-semibold">Dragon News Home</h2>
