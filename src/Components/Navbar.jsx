@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between py-6">
       <div className="pr-14">
-        {user.email}
+        {user ? user.email : ""}
       </div>
 
       <nav>
